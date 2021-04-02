@@ -1,5 +1,9 @@
 import { config, createSchema } from '@keystone-next/keystone/schema';
 import { createAuth } from '@keystone-next/auth';
+import {
+  statelessSessions,
+  withItemData,
+} from '@keystone-next/keystone/session';
 import { User } from './schemas/User';
 import 'dotenv/config';
 
@@ -43,5 +47,8 @@ export default withAuth(
       isAccessAllowed: () => true,
     },
     // TODO: Add session values here
+    session: withItemData(statelessSessions(sessionConfig), {
+      User: `id`,
+    }),
   })
 );
