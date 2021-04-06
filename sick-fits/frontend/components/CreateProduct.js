@@ -17,7 +17,7 @@ export default function CreateProduct() {
           console.log(inputs);
         }}
       >
-        >{/* <fieldset disabled> */}
+        {/* <fieldset disabled> */}
         {/* <fieldset aria-busy> */}
         <fieldset>
           <label htmlFor="image">
