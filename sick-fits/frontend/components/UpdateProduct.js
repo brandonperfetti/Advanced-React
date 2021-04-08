@@ -4,19 +4,13 @@ import useForm from '../utils/useForm';
 import DisplayError from './ErrorMessage';
 import Form from './styles/Form';
 
-const SINGLE_ITEM_QUERY = gql`
-  query SINGLE_ITEM_QUERY($id: ID!) {
+const SINGLE_PRODUCT_QUERY = gql`
+  query SINGLE_PRODUCT_QUERY($id: ID!) {
     Product(where: { id: $id }) {
-      name
-      price
-      description
       id
-      photo {
-        altText
-        image {
-          publicUrlTransformed
-        }
-      }
+      name
+      description
+      price
     }
   }
 `;
@@ -30,7 +24,7 @@ const UPDATE_PRODUCT_MUTATION = gql`
   ) {
     updateProduct(
       id: $id
-      data: { name: $name, price: $price, description: $description }
+      data: { name: $name, description: $description, price: $price }
     ) {
       id
       name
@@ -41,23 +35,20 @@ const UPDATE_PRODUCT_MUTATION = gql`
 `;
 
 export default function UpdateProduct({ id }) {
-  // 1. Get the existing Product
-  const { data, error, loading } = useQuery(SINGLE_ITEM_QUERY, {
+  // 1. We need to get the existing product
+  const { data, error, loading } = useQuery(SINGLE_PRODUCT_QUERY, {
     variables: { id },
   });
-
-  console.log(data, error, loading);
-  // 2. Get the mutation to update the Product
+  // 2. We need to get the mutation to update the product
   const [
     updateProduct,
     { data: updateData, error: updateError, loading: updateLoading },
   ] = useMutation(UPDATE_PRODUCT_MUTATION);
-  // 2.5 Create some state for form inputs
+  // 2.5 Create some state for the form inputs:
   const { inputs, handleChange, clearForm, resetForm } = useForm(data?.Product);
   console.log(inputs);
-  if (loading) return <p>Loading...</p>;
-
-  // 3. Form needs to handle updates
+  if (loading) return <p>loading...</p>;
+  // 3. We need the form to handle the updates
   return (
     <Form
       onSubmit={async (e) => {
@@ -68,11 +59,17 @@ export default function UpdateProduct({ id }) {
             name: inputs.name,
             description: inputs.description,
             price: inputs.price,
-            // ToDo pass in updates to product here
           },
         }).catch(console.error);
         console.log(res);
-        // TODO -  Handle Submit!!!
+        // Submit the inputfields to the backend:
+        // TODO: Handle Submit!!!
+        // const res = await createProduct();
+        // clearForm();
+        // // Go to that product's page!
+        // Router.push({
+        //   pathname: `/product/${res.data.createProduct.id}`,
+        // });
       }}
     >
       <DisplayError error={error || updateError} />
@@ -83,7 +80,7 @@ export default function UpdateProduct({ id }) {
             type="text"
             id="name"
             name="name"
-            placeholder="name"
+            placeholder="Name"
             value={inputs.name}
             onChange={handleChange}
           />
@@ -102,7 +99,6 @@ export default function UpdateProduct({ id }) {
         <label htmlFor="description">
           Description
           <textarea
-            type="text"
             id="description"
             name="description"
             placeholder="Description"
@@ -111,7 +107,7 @@ export default function UpdateProduct({ id }) {
           />
         </label>
 
-        <button type="submit">+ Update Product</button>
+        <button type="submit">Update Product</button>
       </fieldset>
     </Form>
   );
