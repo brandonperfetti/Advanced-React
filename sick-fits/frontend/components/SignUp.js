@@ -33,21 +33,22 @@ export default function SignUp() {
   async function handleSubmit(e) {
     e.preventDefault(); // stop the form from submitting
     console.log(inputs);
-    const res = await signUp();
+    const res = await signUp().catch(console.error);
     console.log(res);
     console.log({ data, loading, error });
     resetForm();
     // Send the email and password to the gql api
   }
-  // const error =
-  //   data?.authenticateUserWithPassword.__typename ===
-  //   'UserAuthenticationWithPasswordFailure'
-  //     ? data?.authenticateUserWithPassword
-  //     : undefined;
   return (
     <Form method="POST" onSubmit={handleSubmit}>
       <h2>Sign Up For an Account</h2>
       <fieldset>
+        {data?.createUser && (
+          <p>
+            Signed up with {data.createUser.email} - Please go ahead and sign
+            in!
+          </p>
+        )}
         <label htmlFor="name">
           Name
           <input
