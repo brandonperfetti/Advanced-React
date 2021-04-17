@@ -41,7 +41,7 @@ export default function SignUp() {
   }
   return (
     <Form method="POST" onSubmit={handleSubmit}>
-      <h2>Sign Up For an Account</h2>
+      <h2>Sign Up</h2>
       <fieldset>
         {data?.createUser && (
           <p>
