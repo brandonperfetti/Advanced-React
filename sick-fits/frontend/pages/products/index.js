@@ -5,7 +5,6 @@ import Pagination from '../../components/Pagination';
 export default function OrderPage() {
   const { query } = useRouter();
   const page = parseInt(query.page);
-  console.log(query.page);
   return (
     <div>
       <Pagination page={page || 1} />
