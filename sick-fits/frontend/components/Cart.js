@@ -34,12 +34,13 @@ function CartItem({ cartItem }) {
       <div>
         <h3>{product.name}</h3>
         <p>
-          {formatMoney(product.price * cartItem.quantity)} -{' '}
+          {formatMoney(product.price * cartItem.quantity)}-
           <em>
             {cartItem.quantity} &times; {formatMoney(product.price)} each
           </em>
         </p>
       </div>
+      {/* <RemoveFromCart id={cartItem.id} /> */}
     </CartItemStyles>
   );
 }
@@ -68,8 +69,4 @@ export default function Cart() {
 Cart.propTypes = {
   cartItem: PropTypes.object,
   product: PropTypes.object,
-  publicUrlTransformed: PropTypes.string,
-  name: PropTypes.string,
-  price: PropTypes.any,
-  quantity: PropTypes.any,
 };
