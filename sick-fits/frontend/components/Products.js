@@ -1,3 +1,4 @@
+import { PropTypes } from 'prop-types';
 import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import styled from 'styled-components';
@@ -44,3 +45,6 @@ export default function Products({ page }) {
     </ProductsListStyles>
   );
 }
+Products.propTypes = {
+  page: PropTypes.number,
+};
