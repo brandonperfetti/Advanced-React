@@ -5,6 +5,8 @@ import PriceTag from './styles/PriceTag';
 import formatMoney from '../utils/formatMoney';
 import DeleteProduct from './DeleteProduct';
 import AddToCart from './AddToCart';
+import PleaseSignIn from '../components/PleaseSignIn';
+import RequireSignIn from '../components/RequireSignIn';
 
 export default function Product({ product }) {
   return (
@@ -19,6 +21,7 @@ export default function Product({ product }) {
       <PriceTag>{formatMoney(product.price)}</PriceTag>
       <p>{product.description}</p>
       <div className="buttonList">
+        <RequireSignIn>
         <Link
           href={{
             pathname: '/update',
@@ -31,6 +34,7 @@ export default function Product({ product }) {
         </Link>
         <AddToCart id={product.id} />
         <DeleteProduct id={product.id}>Delete</DeleteProduct>
+        </RequireSignIn>
       </div>
     </ItemStyles>
   );
