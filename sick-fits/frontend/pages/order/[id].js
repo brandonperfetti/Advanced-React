@@ -50,6 +50,14 @@ export default function SingleOrderPage({ query }) {
         <span>Charge:</span>
         <span>{order.charge}</span>
       </p>
+      <p>
+        <span>Order Total:</span>
+        <span>{formatMoney(order.total)}</span>
+      </p>
+      <p>
+        <span>Item Count:</span>
+        <span>{order.items.length}</span>
+      </p>
       <div className="items">
         {order.items.map((item) => (
           <div className="order-item" key={item.id}>
@@ -64,14 +72,6 @@ export default function SingleOrderPage({ query }) {
           </div>
         ))}
       </div>
-      <p>
-        <span>Item Count:</span>
-        <span>{order.items.length}</span>
-      </p>
-      <p>
-        <span>Order Total:</span>
-        <span>{formatMoney(order.total)}</span>
-      </p>
     </OrderStyles>
   );
 }
