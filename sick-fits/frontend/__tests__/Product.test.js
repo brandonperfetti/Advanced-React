@@ -15,7 +15,7 @@ describe('<Product/>', () => {
     );
     const priceTag = screen.getByText('$50');
     debug(priceTag);
-    expect(priceTag).toBeInTheDocument;
+    expect(priceTag).toBeInTheDocument();
     const link = container.querySelector('a');
     debug(link);
 
@@ -31,5 +31,15 @@ describe('<Product/>', () => {
       </MockedProvider>
     );
     expect(container).toMatchSnapshot();
+  });
+  it('renders the image properly', () => {
+    const { container, debug } = render(
+      <MockedProvider>
+        <Product product={product} />
+      </MockedProvider>
+    );
+    // grab the image
+    const img = screen.getByAltText(product.name);
+    expect(img).toBeInTheDocument();
   });
 });
