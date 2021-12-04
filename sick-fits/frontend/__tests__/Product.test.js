@@ -18,9 +18,18 @@ describe('<Product/>', () => {
     expect(priceTag).toBeInTheDocument;
     const link = container.querySelector('a');
     debug(link);
+
     expect(link).toHaveAttribute('href', '/product/abc123');
     expect(link).toHaveTextContent(product.name);
-
     // debug();
+  });
+
+  it('renders and matches the snapshot', () => {
+    const { container, debug } = render(
+      <MockedProvider>
+        <Product product={product} />
+      </MockedProvider>
+    );
+    expect(container).toMatchSnapshot();
   });
 });
