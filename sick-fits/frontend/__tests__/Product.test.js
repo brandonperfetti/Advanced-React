@@ -17,7 +17,7 @@ describe('<Product/>', () => {
     debug(priceTag);
     expect(priceTag).toBeInTheDocument();
     const link = container.querySelector('a');
-    debug(link);
+    // debug(link);
 
     expect(link).toHaveAttribute('href', '/product/abc123');
     expect(link).toHaveTextContent(product.name);
