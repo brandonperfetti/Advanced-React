@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react';
 import { MockedProvider } from '@apollo/react-testing';
-
 import Product from '../components/Product';
 import { fakeItem } from '../lib/testUtils';
 
@@ -14,17 +13,13 @@ describe('<Product/>', () => {
       </MockedProvider>
     );
     const priceTag = screen.getByText('$50');
-    debug(priceTag);
     expect(priceTag).toBeInTheDocument();
     const link = container.querySelector('a');
-    // debug(link);
-
     expect(link).toHaveAttribute('href', '/product/abc123');
     expect(link).toHaveTextContent(product.name);
-    // debug();
   });
 
-  it('renders and matches the snapshot', () => {
+  it('Renders and matches the snapshot', () => {
     const { container, debug } = render(
       <MockedProvider>
         <Product product={product} />
@@ -32,6 +27,7 @@ describe('<Product/>', () => {
     );
     expect(container).toMatchSnapshot();
   });
+
   it('renders the image properly', () => {
     const { container, debug } = render(
       <MockedProvider>
