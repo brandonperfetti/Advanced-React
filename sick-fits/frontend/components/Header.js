@@ -1,6 +1,6 @@
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { useState, useEffect } from 'react';
 import Cart from './Cart';
 import Nav from './Nav';
 import Search from './Search';

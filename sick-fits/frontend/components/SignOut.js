@@ -14,7 +14,7 @@ export default function SignOut() {
   });
   return (
     <button type="button" onClick={signout}>
-      Log Out!
+      Sign Out!
     </button>
   );
 }

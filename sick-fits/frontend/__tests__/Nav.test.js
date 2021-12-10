@@ -61,7 +61,7 @@ describe('<Nav/>', () => {
     );
     await screen.findByText('Account');
     expect(container).toMatchSnapshot();
-    expect(container).toHaveTextContent('Log Out');
+    expect(container).toHaveTextContent('Sign Out');
     expect(container).toHaveTextContent('My Cart');
   });
 
