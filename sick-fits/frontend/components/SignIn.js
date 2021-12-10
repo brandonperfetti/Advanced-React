@@ -1,9 +1,9 @@
-import gql from 'graphql-tag';
 import { useMutation } from '@apollo/client';
-import Form from './styles/Form';
+import gql from 'graphql-tag';
 import useForm from '../utils/useForm';
-import { CURRENT_USER_QUERY } from './User';
 import DisplayError from './ErrorMessage';
+import Form from './styles/Form';
+import { CURRENT_USER_QUERY } from './User';
 
 const SIGN_IN_MUTATION = gql`
   mutation SIGN_IN_MUTATION($email: String!, $password: String!) {

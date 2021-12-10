@@ -1,15 +1,14 @@
 import { PropTypes } from 'prop-types';
 import styled from 'styled-components';
-import CartStyles from './styles/CartStyles';
-import { useUser } from './User';
-import Supreme from './styles/Supreme';
-import formatMoney from '../utils/formatMoney';
-import calcTotalPrice from '../utils/calcTotalPrice';
 import { useCart } from '../lib/cartState';
-import SickButton from './styles/SickButton';
-import CloseButton from './styles/CloseButton';
-import RemoveFromCart from './RemoveFromCart';
+import calcTotalPrice from '../utils/calcTotalPrice';
+import formatMoney from '../utils/formatMoney';
 import { Checkout } from './Checkout';
+import RemoveFromCart from './RemoveFromCart';
+import CartStyles from './styles/CartStyles';
+import CloseButton from './styles/CloseButton';
+import Supreme from './styles/Supreme';
+import { useUser } from './User';
 
 const CartItemStyles = styled.li`
   padding: 1rem 0;

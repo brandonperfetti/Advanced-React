@@ -1,5 +1,5 @@
-import { useUser } from './User';
 import SignIn from './SignIn';
+import { useUser } from './User';
 
 export default function PleaseSignIn({ children }) {
   const me = useUser();

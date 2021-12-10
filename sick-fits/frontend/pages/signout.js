@@ -1,5 +1,5 @@
-import SignOut from '../components/SignOut';
 import PleaseSignIn from '../components/PleaseSignIn';
+import SignOut from '../components/SignOut';
 
 export default function SignOutPage() {
   return (

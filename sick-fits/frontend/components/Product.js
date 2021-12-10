@@ -1,11 +1,11 @@
 import Link from 'next/link';
-import ItemStyles from './styles/ItemStyles';
-import Title from './styles/Title';
-import PriceTag from './styles/PriceTag';
 import formatMoney from '../utils/formatMoney';
-import DeleteProduct from './DeleteProduct';
 import AddToCart from './AddToCart';
+import DeleteProduct from './DeleteProduct';
 import RequireSignIn from './RequireSignIn';
+import ItemStyles from './styles/ItemStyles';
+import PriceTag from './styles/PriceTag';
+import Title from './styles/Title';
 
 export default function Product({ product }) {
   return (

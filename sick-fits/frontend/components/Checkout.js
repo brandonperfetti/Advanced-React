@@ -1,18 +1,18 @@
-import nProgress from 'nprogress';
-import styled from 'styled-components';
-import { useState } from 'react';
-import { loadStripe } from '@stripe/stripe-js';
+import { useMutation } from '@apollo/client';
 import {
   CardElement,
   Elements,
   useElements,
-  useStripe,
+  useStripe
 } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
 import gql from 'graphql-tag';
-import { useMutation } from '@apollo/client';
 import { useRouter } from 'next/dist/client/router';
-import SickButton from './styles/SickButton';
+import nProgress from 'nprogress';
+import { useState } from 'react';
+import styled from 'styled-components';
 import { useCart } from '../lib/cartState';
+import SickButton from './styles/SickButton';
 import { CURRENT_USER_QUERY } from './User';
 
 const CheckoutFormStyles = styled.form`

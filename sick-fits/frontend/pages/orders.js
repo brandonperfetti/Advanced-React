@@ -1,11 +1,11 @@
 import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import Head from 'next/head';
-import styled from 'styled-components';
 import Link from 'next/link';
+import styled from 'styled-components';
 import ErrorMessage from '../components/ErrorMessage';
-import formatMoney from '../utils/formatMoney';
 import OrderItemStyles from '../components/styles/OrderItemStyles';
+import formatMoney from '../utils/formatMoney';
 
 const USER_ORDERS_QUERY = gql`
   query USER_ORDERS_QUERY {
